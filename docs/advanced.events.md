@@ -7,18 +7,17 @@ slug: /advanced/events
 
 When shown, hidden and destroyed, the instance will emit certain events. It is possible to subscribe to these with the `on()` method which will receive the dialog container element and the [event object](https://developer.mozilla.org/en-US/docs/Web/API/Event) (if any).
 
-For events triggered from interacting with a UI element (such as opening or closing with a button), the original click event is passed in the `detail` key of the DOM event. For instance, to access the button that was interacted with to open the dialog, one can use `event.detail.currentTarget`.
-
+For events triggered from interacting with a UI element (such as opening or closing with a button), the original click event is passed in the `detail` key of the DOM event. For instance, to access the button that was interacted with to open the dialog, one can use `event.detail.target`.
 
 ```js
 dialog.on('show', function (event) {
   // Do something when dialog gets shown
-  // Note: opener is `event.detail.currentTarget`
+  // Note: opener is `event.detail.target`
 })
 
 dialog.on('hide', function (event) {
   // Do something when dialog gets hidden
-  // Note: closer is `event.detail.currentTarget`
+  // Note: closer is `event.detail.target`
 })
 
 dialog.on('destroy', function () {
@@ -41,12 +40,12 @@ For [auto-instantiated dialogs](usage.instantiation.md) though, registering even
 ```js
 dialog.addEventListener('show', function (event) {
   // Do something when dialog gets shown
-  // Note: opener is `event.detail.currentTarget`
+  // Note: opener is `event.detail.target`
 })
 
 dialog.addEventListener('hide', function (event) {
   // Do something when dialog gets hidden
-  // Note: closer is `event.detail.currentTarget`
+  // Note: closer is `event.detail.target`
 })
 
 dialog.addEventListener('destroy', function () {
